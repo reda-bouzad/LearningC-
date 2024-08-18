@@ -374,16 +374,146 @@ namespace MyFirstProject
             // Array are fixed (size can't change)
 
             // We can clear an array
-            Array.Clear(lucky_friends, 0, lucky_numbers.Length);
+/*            Array.Clear(lucky_friends, 0, lucky_numbers.Length);
+*/            /*          Console.WriteLine();
+                      foreach (var friend in lucky_friends)
+                      {
+                          Console.Write($"{friend} ");
+                      }*/
             Console.WriteLine();
+            Console.WriteLine("-------------------------------------------------");
+            // We can also use default value
+            lucky_friends[0] = default;
+            Console.WriteLine("list of lucky friends: ");
             foreach (var friend in lucky_friends)
             {
                 Console.Write($"{friend} ");
             }
-            
-            // We can also 
+
+            // Array.IndexOf
+            Console.WriteLine();
+            Console.WriteLine(Array.IndexOf(lucky_friends, "anas"));
+
+            int[] unlucky_numbers = new int[]
+            {
+                420, 69, 13
+            };
+            // Lists
+            List<int> list_numbers = new List<int>()
+            {
+                78, 88, 51, 29
+            };
+            list_numbers.Add(7);
+            list_numbers.Add(10);
+
+            for (int i = 0; i < list_numbers.Count; i++)
+            {
+                Console.WriteLine(list_numbers[i]);
+            }
+
+            // Dictionary
+            // In a Dictionary the keys must be uniq and not null
+            Dictionary<int, string> names = new Dictionary<int, string>()
+            {
+                {10, "Ahmed" },
+                {20, "Adam" },
+                {30, "Anouar" },
+            };
+            names.Add(1, "Reda");
+            names.Add(2, "Ali");
+            names.Add(3, "Ayoub");
+            for (int i = 0; i < names.Count; i++)
+            {
+                KeyValuePair<int, string> pair = names.ElementAt(i);
+                Console.WriteLine("----------");
+                Console.WriteLine($"{pair.Key} - {pair.Value}");
+            }
+            // Declaring a <string, string> Dictionary
+            Dictionary<string, string> teachers = new Dictionary<string, string>() {
+                {"Math", "Hassan" },
+                {"Arabic", "Jawad" },
+                {"French", "AbdelKader" },
+            };
+
+            // Not recomanded
+            Console.WriteLine(teachers["Math"]);
+
+            // The recomanded way
+            if(teachers.TryGetValue("English", out string teacher))
+            {
+                Console.WriteLine(teacher);
+            } else
+            {
+                Console.WriteLine("Teacher not Found");
+            }
+            Console.WriteLine(teachers.Remove("Math"));
+
+            // Before Removing something always check first
+            if (teachers.ContainsKey("Arabic"))
+            {
+                teachers.Remove("Arabic");
+                Console.WriteLine("Arabic removed");
+            } else
+            {
+                Console.WriteLine("Arabic not found");
+            }
+
+            // Exercice
+            List<int> evenNumbers = new List<int>();
+            List<int> oddNumbers = new List<int>();
+
+            for (int i = 0; i < 74 ; i++)
+            {
+                Console.WriteLine(i);
+                if( i % 2 == 0 )
+                {
+                    evenNumbers.Add(i);
+                } else
+                {
+                    oddNumbers.Add(i);
+                }
+            }
+
+            Console.WriteLine("the even numbers are: ");
+            foreach (var number in evenNumbers)
+            {
+                Console.Write($"{number} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("the odd numbers are: ");
+            foreach (var number in oddNumbers)
+            {
+                Console.Write($"{number} ");
+            }
+
+
+            // Array of multiple
+            int my_number_1 = 7;
+            int my_number_2 = 5;
+            int[] result_Array = new int[5];
+            int counter = 0;
+            Console.WriteLine();
+            Console.WriteLine("------------------------------");
+                for (int i = 1; i <= my_number_2; i++, counter++)
+                {
+                /*Console.WriteLine($"{my_number_1} x {i} = {my_number_1 * i} ");*/
+                result_Array[counter] = my_number_1 * i;
+                }
+            Console.WriteLine("------------------------------");
+            foreach (int number in result_Array)
+            {
+                Console.WriteLine(number);
+            }
+
+            welcomeMessage(name: "Reda");
 
             Console.ReadLine();
+
+        }
+
+        static void welcomeMessage(string name)
+        {
+            Console.WriteLine($"Hello {name}");
         }
     }
 }
